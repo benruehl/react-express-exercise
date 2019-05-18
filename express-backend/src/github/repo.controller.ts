@@ -29,7 +29,7 @@ class GithubRepoController implements Controller {
         res: express.Response,
     ): Promise<void> {
         const searchTerm: string = req.query.q;
-        res.send(await this.model.getRepos(searchTerm).then());
+        res.send(await this.model.getRepos(searchTerm));
     }
 
     private addBookmark(req: express.Request, res: express.Response): void {
