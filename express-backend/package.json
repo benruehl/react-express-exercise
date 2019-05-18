@@ -1,0 +1,41 @@
+{
+    "name": "react-express-exercise",
+    "version": "1.0.0",
+    "description": "An exercise consisting of a react client and an express server interacting with the GitHub API",
+    "main": "index.js",
+    "scripts": {
+        "start": "node dist/app.js",
+        "build": "tsc",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "lint": "tsc --noEmit && eslint src/**/*.{js,ts,tsx} --ignore-pattern node_modules/ --quiet --fix"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/benruehl/react-express-exercise.git"
+    },
+    "keywords": [
+        "react",
+        "express",
+        "github",
+        "api"
+    ],
+    "author": "Benjamin Rühl",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/benruehl/react-express-exercise/issues"
+    },
+    "homepage": "https://github.com/benruehl/react-express-exercise#readme",
+    "dependencies": {
+        "express": "^4.17.0",
+        "typescript": "^3.4.5"
+    },
+    "devDependencies": {
+        "@types/express": "^4.16.1",
+        "@typescript-eslint/eslint-plugin": "^1.9.0",
+        "@typescript-eslint/parser": "^1.9.0",
+        "eslint": "^5.16.0",
+        "eslint-config-prettier": "^4.3.0",
+        "eslint-plugin-prettier": "^3.1.0",
+        "prettier": "^1.17.1"
+    }
+}
