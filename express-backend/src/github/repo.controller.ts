@@ -18,6 +18,10 @@ class GithubRepoController implements Controller {
             `${this.routePrefix}/:id/bookmark`,
             this.addBookmark.bind(this),
         );
+        this.router.get(
+            `${this.routePrefix}/bookmarks`,
+            this.getBookmarks.bind(this),
+        );
     }
 
     private async searchRepos(
@@ -32,6 +36,13 @@ class GithubRepoController implements Controller {
         const repoId = req.params.id;
         this.model.addBookmark(repoId);
         res.send();
+    }
+
+    private async getBookmarks(
+        req: express.Request,
+        res: express.Response,
+    ): Promise<void> {
+        res.send(await this.model.getBookmarkedRepos());
     }
 
     public getRouter(): express.Router {

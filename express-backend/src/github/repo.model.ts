@@ -38,6 +38,35 @@ class GithubRepoModel implements RepositoryModel {
             this.bookmarks.push(repoId);
         }
     }
+
+    public async getBookmarkedRepos(): Promise<Repository[]> {
+        const bookmarkedRepos = await Promise.all(
+            this.bookmarks.map(
+                async (bookmark): Promise<Repository> => {
+                    try {
+                        const response = await this.client.get(
+                            `/repositories/${bookmark}`,
+                        );
+
+                        return {
+                            id: response.data.id,
+                            name: response.data.full_name,
+                        };
+                    } catch (e) {
+                        console.error(e);
+                        return {
+                            id: NaN,
+                            name: "",
+                        };
+                    }
+                },
+            ),
+        );
+
+        return bookmarkedRepos.filter(
+            (bookmarkedRepo): boolean => !isNaN(bookmarkedRepo.id),
+        );
+    }
 }
 
 export default GithubRepoModel;
