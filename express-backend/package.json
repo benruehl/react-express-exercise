@@ -4,7 +4,7 @@
     "description": "An exercise consisting of a react client and an express server interacting with the GitHub API",
     "main": "index.js",
     "scripts": {
-        "start": "node dist/app.js",
+        "start": "node dist/index.js",
         "build": "tsc",
         "test": "echo \"Error: no test specified\" && exit 1",
         "lint": "tsc --noEmit && eslint src/**/*.{js,ts,tsx} --ignore-pattern node_modules/ --quiet --fix"
