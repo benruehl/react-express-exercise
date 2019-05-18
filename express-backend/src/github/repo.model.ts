@@ -12,7 +12,7 @@ class GithubRepoModel implements RepositoryModel {
     public constructor() {
         this.client = axios.create({
             baseURL: "https://api.github.com",
-            timeout: 10000,
+            timeout: 1000,
         });
     }
 
