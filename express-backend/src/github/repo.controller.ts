@@ -16,9 +16,12 @@ class GithubRepoController implements Controller {
         this.router.get(this.routePrefix, this.searchRepos.bind(this));
     }
 
-    private searchRepos(req: express.Request, res: express.Response): void {
+    private async searchRepos(
+        req: express.Request,
+        res: express.Response,
+    ): Promise<void> {
         const searchTerm: string = req.query.q;
-        res.send(this.model.getRepos(searchTerm));
+        res.send(await this.model.getRepos(searchTerm).then());
     }
 
     public getRouter(): express.Router {

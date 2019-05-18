@@ -3,5 +3,10 @@ export interface Repository {
 }
 
 export interface RepositoryModel {
-    getRepos(searchTerm: string): Repository[];
+    getRepos(searchTerm: string): Promise<Repository[]>;
+}
+
+export interface RemoteGithubRepository {
+    full_name: string;
+    html_url: string;
 }
