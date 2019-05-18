@@ -14,6 +14,10 @@ class GithubRepoController implements Controller {
 
     private initRoutes(): void {
         this.router.get(this.routePrefix, this.searchRepos.bind(this));
+        this.router.put(
+            `${this.routePrefix}/:id/bookmark`,
+            this.addBookmark.bind(this),
+        );
     }
 
     private async searchRepos(
@@ -22,6 +26,12 @@ class GithubRepoController implements Controller {
     ): Promise<void> {
         const searchTerm: string = req.query.q;
         res.send(await this.model.getRepos(searchTerm).then());
+    }
+
+    private addBookmark(req: express.Request, res: express.Response): void {
+        const repoId = req.params.id;
+        this.model.addBookmark(repoId);
+        res.send();
     }
 
     public getRouter(): express.Router {
