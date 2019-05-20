@@ -18,8 +18,12 @@ class GithubRepoModel implements RepositoryModel {
 
     public async getRepos(searchTerm: string): Promise<Repository[]> {
         try {
+            if (!searchTerm || searchTerm === "") {
+                searchTerm = "stars:>=10000";
+            }
+
             const response = await this.client.get(
-                `/search/repositories?q=${searchTerm}`,
+                `/search/repositories?q=${searchTerm}&sort=stars`,
             );
 
             return response.data.items.map(
