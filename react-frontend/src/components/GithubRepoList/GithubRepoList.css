@@ -1,0 +1,33 @@
+.Github {
+    display: flex;
+    flex-direction: column;
+}
+
+.Github-search {
+    padding: 1em;
+}
+
+.Github-list {
+    list-style: none;
+    padding: 0;
+    border: 1px solid #e0e0e0;
+    border-radius: 0.5em;
+}
+
+.Github-repo-item {
+    background: #f0f0f0;
+}
+
+.Github-repo-item:not(:last-child) {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.Github-repo-item:nth-child(odd) {
+    background: #f8f8f8;
+}
+
+.Github-loading {
+    animation: App-logo-spin infinite 4s linear;
+    height: 14vmin;
+    pointer-events: none;
+}

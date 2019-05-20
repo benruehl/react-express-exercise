@@ -7,6 +7,8 @@ export interface Repository {
 
 export interface GithubState {
     repositories: Repository[];
+    isFetching: boolean;
+    lastUpdated: Date;
     errorMessage: string | null;
 }
 

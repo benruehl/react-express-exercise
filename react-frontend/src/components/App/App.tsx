@@ -1,27 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
+import store from '../../store';
+import { fetchRepositories } from '../../store/github/actions';
+import Section from '../Section';
+import SearchBar from '../SearchBar';
+import GithubRepoList from "../GithubRepoList";
 import './App.css';
-import GithubRepos from "../GithubRepos";
+
+function startSearch(searchQuery: string) {
+  store.dispatch(fetchRepositories(searchQuery));
+}
 
 const App: React.FC = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Section>
+          <div className="App-header-content">
+            <h2>
+              GitHub Repositories
+            </h2>
+            <div className="App-search">
+              <SearchBar onSearch={startSearch}/>
+            </div>
+          </div>
+        </Section>
       </header>
-
-      <GithubRepos/>
+      <main className="App-main">
+        <Section>
+          <GithubRepoList/>
+        </Section>
+      </main>
     </div>
   );
 }

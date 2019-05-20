@@ -2,14 +2,9 @@ import { GithubState, GithubActionTypes, REPOSITORIES_FETCH, REPOSITORIES_FETCH_
 
 const initialState: GithubState = {
     errorMessage: null,
-    repositories: [{
-        id: 1,
-        name: "lorem"
-    },
-    {
-        id: 2,
-        name: "ipsum"
-    }],
+    isFetching: false,
+    lastUpdated: new Date(),
+    repositories: [],
 };
   
 export function githubReducer(state = initialState, action: GithubActionTypes): GithubState {
@@ -17,17 +12,21 @@ export function githubReducer(state = initialState, action: GithubActionTypes): 
         case REPOSITORIES_FETCH:
             return {
                 ...state,
-                repositories: []
+                repositories: [],
+                isFetching: true,
             }
         case REPOSITORIES_FETCH_SUCCESS:
             return {
                 ...state,
-                repositories: action.repositories
+                repositories: action.repositories,
+                isFetching: false,
+                errorMessage: "",
             }
         case REPOSITORIES_FETCH_ERROR:
             return {
                 ...state,
-                errorMessage: action.errorMessage
+                isFetching: false,
+                errorMessage: action.errorMessage,
             }
         default:
             return state
