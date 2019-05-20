@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import store from '../../store';
 import { fetchRepositories } from '../../store/github/actions';
 import Section from '../Section';
@@ -11,6 +11,10 @@ function startSearch(searchQuery: string) {
 }
 
 const App: React.FC = () => {
+  useEffect(() => {
+    store.dispatch(fetchRepositories(""));
+  }); 
+
   return (
     <div className="App">
       <header className="App-header">
