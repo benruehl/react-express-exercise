@@ -30,6 +30,11 @@ const GithubRepoList: React.FC<Props> = ({ repositories, isFetching, errorMessag
                     ))}
                 </ul>
             }
+            {repositories.length === 0 && !isFetching &&
+                <div className='Github-empty'>
+                    No repositories found
+                </div>
+            }
         </div>
     );
 }

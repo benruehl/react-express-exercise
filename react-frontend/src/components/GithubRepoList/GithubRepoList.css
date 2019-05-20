@@ -1,6 +1,7 @@
 .Github {
     display: flex;
     flex-direction: column;
+    min-height: 20em;
 }
 
 .Github-search {
@@ -30,4 +31,18 @@
     animation: App-logo-spin infinite 4s linear;
     height: 14vmin;
     pointer-events: none;
+    margin: auto;
+    align-self: center;
+}
+
+.Github-empty {
+    color: #b0b0b0;
+    background: #f8f8f8;
+    border: 3px dashed #b0b0b0;
+    border-radius: 0.5em;
+    font-weight: bold;
+    padding: 2em 4em;
+    margin: auto;
+    align-self: center;
+    text-align: center;
 }
