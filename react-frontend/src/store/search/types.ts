@@ -1,14 +1,14 @@
 import { Action } from "redux";
 
-export interface Repository {
+export interface SearchResultRepository {
     id: number;
     name: string;
     isBookmarked: boolean;
 }
 
-export interface GithubState {
-    repositories: Repository[];
-    bookmarkedRepositories: Repository[];
+export interface SearchState {
+    repositories: SearchResultRepository[];
+    bookmarkedRepositories: SearchResultRepository[];
     isFetching: boolean;
     lastUpdated: Date;
     errorMessage: string | null;
@@ -24,7 +24,7 @@ interface FetchRepositoriesAction extends Action {
 
 interface FetchRepositoriesSuccessAction extends Action {
     type: typeof REPOSITORIES_FETCH_SUCCESS;
-    repositories: Repository[];
+    repositories: SearchResultRepository[];
 }
 
 interface FetchRepositoriesErrorAction extends Action {
@@ -32,7 +32,7 @@ interface FetchRepositoriesErrorAction extends Action {
     errorMessage: string;
 }
 
-export type GithubActionTypes =
+export type SearchActionTypes =
     FetchRepositoriesAction |
     FetchRepositoriesSuccessAction |
     FetchRepositoriesErrorAction;

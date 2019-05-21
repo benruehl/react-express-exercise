@@ -1,7 +1,7 @@
 import axios from "axios";
 import { ThunkDispatch } from "redux-thunk";
 import { AppState } from "..";
-import { Repository } from "../github/types";
+import { SearchResultRepository } from "../search/types";
 import { 
     BookmarkActionTypes,
     BookmarkedRepository,
@@ -13,7 +13,7 @@ import {
     REPOSITORIES_BOOKMARKED_FETCH_ERROR
 } from "./types";
 
-export function bookmarkRepository(repository: Repository): any {
+export function bookmarkRepository(repository: SearchResultRepository): any {
     return function(dispatch: ThunkDispatch<AppState, void, BookmarkActionTypes>) {
         dispatch(requestRepositoryBookmark(repository))
     
@@ -25,7 +25,7 @@ export function bookmarkRepository(repository: Repository): any {
       }
 }
 
-function requestRepositoryBookmark(repository: Repository): BookmarkActionTypes {
+function requestRepositoryBookmark(repository: SearchResultRepository): BookmarkActionTypes {
     return {
         type: REPOSITORIES_BOOKMARK,
         repository: repository,

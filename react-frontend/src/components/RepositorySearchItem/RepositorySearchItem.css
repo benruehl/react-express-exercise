@@ -1,8 +1,8 @@
-.GithubRepo {
+.RepositorySearchItem {
     padding: 1em 2em;
     text-align: start;
 }
 
-.GithubRepo-icon {
+.RepositorySearchItem-icon {
     margin-right: 1em;
 }

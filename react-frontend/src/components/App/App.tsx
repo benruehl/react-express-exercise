@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import store from '../../store';
-import { fetchRepositories } from '../../store/github/actions';
+import { fetchRepositories } from '../../store/search/actions';
 import { fetchBookmarkedRepositories } from '../../store/bookmark/actions';
 import Section from '../Section';
 import SearchBar from '../SearchBar';
-import GithubRepoList from "../GithubRepoList";
+import RepositorySearchList from "../RepositorySearchList";
 import BookmarkList from '../BookmarkList';
 import './App.css';
 
@@ -35,7 +35,7 @@ const App: React.FC = () => {
       <main className="App-main">
         <Section>
           <div className="App-main-content">
-            <GithubRepoList/>
+            <RepositorySearchList/>
             <BookmarkList/>
           </div>
         </Section>

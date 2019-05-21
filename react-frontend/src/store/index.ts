@@ -1,10 +1,10 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
-import { githubReducer } from "./github/reducers";
+import { searchReducer } from "./search/reducers";
 import { bookmarkReducer } from "./bookmark/reducers";
 
 const rootReducer = combineReducers({
-    github: githubReducer,
+    search: searchReducer,
     bookmark: bookmarkReducer,
 });
 

@@ -1,13 +1,13 @@
 import { 
-    GithubState,
-    GithubActionTypes,
+    SearchState,
+    SearchActionTypes,
     REPOSITORIES_FETCH,
     REPOSITORIES_FETCH_SUCCESS,
     REPOSITORIES_FETCH_ERROR,
 } from "./types";
 import { REPOSITORIES_BOOKMARK, BookmarkActionTypes } from "../bookmark/types";
 
-const initialState: GithubState = {
+const initialState: SearchState = {
     errorMessage: null,
     isFetching: false,
     lastUpdated: new Date(),
@@ -15,7 +15,7 @@ const initialState: GithubState = {
     bookmarkedRepositories: [],
 };
   
-export function githubReducer(state = initialState, action: GithubActionTypes | BookmarkActionTypes): GithubState {
+export function searchReducer(state = initialState, action: SearchActionTypes | BookmarkActionTypes): SearchState {
     switch (action.type) {
         case REPOSITORIES_FETCH:
             return {

@@ -1,11 +1,11 @@
-.Github {
+.RepositorySearchList {
     display: flex;
     flex-direction: column;
     flex: 1;
     min-height: 20em;
 }
 
-.Github-list {
+.RepositorySearchList-list {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -13,19 +13,19 @@
     border-radius: 0.5em;
 }
 
-.Github-repo-item {
+.RepositorySearchList-repo-item {
     background: #f7f9fb;
 }
 
-.Github-repo-item:not(:last-child) {
+.RepositorySearchList-repo-item:not(:last-child) {
     border-bottom: 1px solid #dce0e8;
 }
 
-.Github-repo-item:nth-child(odd) {
+.RepositorySearchList-repo-item:nth-child(odd) {
     background: #edf0f5;
 }
 
-.Github-loading {
+.RepositorySearchList-loading {
     animation: App-logo-spin infinite 4s linear;
     height: 14vmin;
     pointer-events: none;
@@ -33,7 +33,7 @@
     align-self: center;
 }
 
-.Github-empty {
+.RepositorySearchList-empty {
     color: #838b9e;
     background: #edf0f5;
     border: 3px dashed #838b9e;
