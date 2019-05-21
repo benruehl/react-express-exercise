@@ -14,15 +14,15 @@
 }
 
 .Github-repo-item {
-    background: #f0f0f0;
+    background: #f7f9fb;
 }
 
 .Github-repo-item:not(:last-child) {
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid #dce0e8;
 }
 
 .Github-repo-item:nth-child(odd) {
-    background: #f8f8f8;
+    background: #edf0f5;
 }
 
 .Github-loading {
@@ -34,9 +34,9 @@
 }
 
 .Github-empty {
-    color: #b0b0b0;
-    background: #f8f8f8;
-    border: 3px dashed #b0b0b0;
+    color: #838b9e;
+    background: #edf0f5;
+    border: 3px dashed #838b9e;
     border-radius: 0.5em;
     font-weight: bold;
     padding: 2em 4em;
