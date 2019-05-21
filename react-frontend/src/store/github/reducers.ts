@@ -4,11 +4,8 @@ import {
     REPOSITORIES_FETCH,
     REPOSITORIES_FETCH_SUCCESS,
     REPOSITORIES_FETCH_ERROR,
-    REPOSITORIES_BOOKMARK,
-    REPOSITORIES_BOOKMARKED_FETCH,
-    REPOSITORIES_BOOKMARKED_FETCH_SUCCESS,
-    REPOSITORIES_BOOKMARKED_FETCH_ERROR
 } from "./types";
+import { REPOSITORIES_BOOKMARK, BookmarkActionTypes } from "../bookmark/types";
 
 const initialState: GithubState = {
     errorMessage: null,
@@ -18,7 +15,7 @@ const initialState: GithubState = {
     bookmarkedRepositories: [],
 };
   
-export function githubReducer(state = initialState, action: GithubActionTypes): GithubState {
+export function githubReducer(state = initialState, action: GithubActionTypes | BookmarkActionTypes): GithubState {
     switch (action.type) {
         case REPOSITORIES_FETCH:
             return {
@@ -42,27 +39,7 @@ export function githubReducer(state = initialState, action: GithubActionTypes): 
         case REPOSITORIES_BOOKMARK:
             return {
                 ...state,
-                repositories: state.repositories.map(r => r.id != action.repository.id ? r : {...r, isBookmarked: true}),
-                bookmarkedRepositories: [...state.bookmarkedRepositories, action.repository],
-            }
-        case REPOSITORIES_BOOKMARKED_FETCH:
-            return {
-                ...state,
-                bookmarkedRepositories: [],
-                isFetching: true,
-            }
-        case REPOSITORIES_BOOKMARKED_FETCH_SUCCESS:
-            return {
-                ...state,
-                bookmarkedRepositories: action.repositories,
-                isFetching: false,
-                errorMessage: "",
-            }
-        case REPOSITORIES_BOOKMARKED_FETCH_ERROR:
-            return {
-                ...state,
-                isFetching: false,
-                errorMessage: action.errorMessage,
+                repositories: state.repositories.map(r => r.id !== action.repository.id ? r : {...r, isBookmarked: true}),
             }
         default:
             return state

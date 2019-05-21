@@ -32,49 +32,7 @@ interface FetchRepositoriesErrorAction extends Action {
     errorMessage: string;
 }
 
-export const REPOSITORIES_BOOKMARK = 'REPOSITORIES_BOOKMARK';
-export const REPOSITORIES_BOOKMARK_SUCCESS = 'REPOSITORIES_BOOKMARK_SUCCESS';
-export const REPOSITORIES_BOOKMARK_ERROR = 'REPOSITORIES_BOOKMARK_ERROR';
-
-interface BookmarkRepositoryAction extends Action {
-    type: typeof REPOSITORIES_BOOKMARK;
-    repository: Repository;
-}
-
-interface BookmarkRepositorySuccessAction extends Action {
-    type: typeof REPOSITORIES_BOOKMARK_SUCCESS;
-}
-
-interface BookmarkRepositoryErrorAction extends Action {
-    type: typeof REPOSITORIES_BOOKMARK_ERROR;
-    errorMessage: string;
-}
-
-export const REPOSITORIES_BOOKMARKED_FETCH = 'REPOSITORIES_BOOKMARKED_FETCH';
-export const REPOSITORIES_BOOKMARKED_FETCH_SUCCESS = 'REPOSITORIES_BOOKMARKED_FETCH_SUCCESS';
-export const REPOSITORIES_BOOKMARKED_FETCH_ERROR = 'REPOSITORIES_BOOKMARKED_FETCH_ERROR';
-
-interface FetchBookmarkedRepositoriesAction extends Action {
-    type: typeof REPOSITORIES_BOOKMARKED_FETCH;
-}
-
-interface FetchBookmarkedRepositoriesSuccessAction extends Action {
-    type: typeof REPOSITORIES_BOOKMARKED_FETCH_SUCCESS;
-    repositories: Repository[];
-}
-
-interface FetchBookmarkedRepositoriesErrorAction extends Action {
-    type: typeof REPOSITORIES_BOOKMARKED_FETCH_ERROR;
-    errorMessage: string;
-}
-
 export type GithubActionTypes =
     FetchRepositoriesAction |
     FetchRepositoriesSuccessAction |
-    FetchRepositoriesErrorAction |
-    BookmarkRepositoryAction |
-    BookmarkRepositorySuccessAction |
-    BookmarkRepositoryErrorAction |
-    FetchBookmarkedRepositoriesAction |
-    FetchBookmarkedRepositoriesSuccessAction |
-    FetchBookmarkedRepositoriesErrorAction;
+    FetchRepositoriesErrorAction;

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import store from '../../store';
-import { fetchRepositories, fetchBookmarkedRepositories } from '../../store/github/actions';
+import { fetchRepositories } from '../../store/github/actions';
+import { fetchBookmarkedRepositories } from '../../store/bookmark/actions';
 import Section from '../Section';
 import SearchBar from '../SearchBar';
 import GithubRepoList from "../GithubRepoList";

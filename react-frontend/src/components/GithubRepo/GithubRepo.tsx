@@ -1,7 +1,7 @@
 import React from 'react';
 import store from '../../store';
-import { bookmarkRepository } from '../../store/github/actions';
 import { Repository } from '../../store/github/types';
+import { bookmarkRepository } from '../../store/bookmark/actions';
 import './GithubRepo.css';
 
 interface Props {

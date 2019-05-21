@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Repository } from '../../store/github/types';
+import { BookmarkedRepository } from '../../store/bookmark/types';
 import { AppState } from '../../store';
-import './BookmarkList.css';
 import Bookmark from '../Bookmark/Bookmark';
+import './BookmarkList.css';
 
 interface Props {
-    repositories: Repository[];
+    repositories: BookmarkedRepository[];
 }
 
 const BookmarkList: React.FC<Props> = ({ repositories }) => {
@@ -27,7 +27,7 @@ const BookmarkList: React.FC<Props> = ({ repositories }) => {
 }
 
 const mapStateToProps = (state: AppState) => ({
-    repositories: state.github.bookmarkedRepositories,
+    repositories: state.bookmark.repositories,
 });
 
 export default connect(mapStateToProps)(BookmarkList);

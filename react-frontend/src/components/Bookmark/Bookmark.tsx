@@ -1,9 +1,9 @@
 import React from 'react';
-import { Repository } from '../../store/github/types';
+import { BookmarkedRepository } from '../../store/bookmark/types';
 import './Bookmark.css';
 
 interface Props {
-    repository: Repository;
+    repository: BookmarkedRepository;
 }
 
 const Bookmark: React.FC<Props> = ({ repository }) => {
