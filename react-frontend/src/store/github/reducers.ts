@@ -1,10 +1,11 @@
-import { GithubState, GithubActionTypes, REPOSITORIES_FETCH, REPOSITORIES_FETCH_SUCCESS, REPOSITORIES_FETCH_ERROR } from "./types";
+import { GithubState, GithubActionTypes, REPOSITORIES_FETCH, REPOSITORIES_FETCH_SUCCESS, REPOSITORIES_FETCH_ERROR, REPOSITORIES_BOOKMARK } from "./types";
 
 const initialState: GithubState = {
     errorMessage: null,
     isFetching: false,
     lastUpdated: new Date(),
     repositories: [],
+    bookmarkedRepositories: [],
 };
   
 export function githubReducer(state = initialState, action: GithubActionTypes): GithubState {
@@ -27,6 +28,12 @@ export function githubReducer(state = initialState, action: GithubActionTypes): 
                 ...state,
                 isFetching: false,
                 errorMessage: action.errorMessage,
+            }
+        case REPOSITORIES_BOOKMARK:
+            return {
+                ...state,
+                repositories: state.repositories.map(r => r.id != action.repository.id ? r : {...r, isBookmarked: true}),
+                bookmarkedRepositories: [...state.bookmarkedRepositories, action.repository],
             }
         default:
             return state

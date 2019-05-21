@@ -1,7 +1,16 @@
 import axios from "axios";
-import { GithubActionTypes, Repository, REPOSITORIES_FETCH, REPOSITORIES_FETCH_SUCCESS, REPOSITORIES_FETCH_ERROR } from "./types";
 import { ThunkDispatch } from "redux-thunk";
 import { AppState } from "..";
+import { 
+    GithubActionTypes,
+    Repository,
+    REPOSITORIES_FETCH,
+    REPOSITORIES_FETCH_SUCCESS,
+    REPOSITORIES_FETCH_ERROR,
+    REPOSITORIES_BOOKMARK,
+    REPOSITORIES_BOOKMARK_ERROR,
+    REPOSITORIES_BOOKMARK_SUCCESS
+} from "./types";
 
 export function fetchRepositories(searchTerm: string): any {
     return function(dispatch: ThunkDispatch<AppState, void, GithubActionTypes>) {
@@ -31,6 +40,38 @@ export function fetchRepositoriesSuccess(fetchedRepos: Repository[]): GithubActi
 export function fetchRepositoriesError(errorMessage: string): GithubActionTypes {
     return {
         type: REPOSITORIES_FETCH_ERROR,
+        errorMessage: errorMessage,
+    }
+}
+
+export function bookmarkRepository(repository: Repository): any {
+    return function(dispatch: ThunkDispatch<AppState, void, GithubActionTypes>) {
+        dispatch(requestRepositoryBookmark(repository))
+    
+        return axios.put(`http://localhost:4000/repos/${repository.id}/bookmark`)
+            .then(
+                response => dispatch(bookmarkRepositorySuccess()),
+                error => dispatch(bookmarkRepositoryError(error.message))
+            );
+      }
+}
+
+function requestRepositoryBookmark(repository: Repository): GithubActionTypes {
+    return {
+        type: REPOSITORIES_BOOKMARK,
+        repository: repository,
+    }
+}
+
+export function bookmarkRepositorySuccess(): GithubActionTypes {
+    return {
+        type: REPOSITORIES_BOOKMARK_SUCCESS,
+    }
+}
+
+export function bookmarkRepositoryError(errorMessage: string): GithubActionTypes {
+    return {
+        type: REPOSITORIES_BOOKMARK_ERROR,
         errorMessage: errorMessage,
     }
 }
