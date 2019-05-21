@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import store from '../../store';
-import { fetchRepositories } from '../../store/github/actions';
+import { fetchRepositories, fetchBookmarkedRepositories } from '../../store/github/actions';
 import Section from '../Section';
 import SearchBar from '../SearchBar';
 import GithubRepoList from "../GithubRepoList";
+import BookmarkList from '../BookmarkList';
 import './App.css';
 
 function startSearch(searchQuery: string) {
@@ -13,6 +14,7 @@ function startSearch(searchQuery: string) {
 const App: React.FC = () => {
   useEffect(() => {
     store.dispatch(fetchRepositories(""));
+    store.dispatch(fetchBookmarkedRepositories());
   }); 
 
   return (
@@ -31,7 +33,10 @@ const App: React.FC = () => {
       </header>
       <main className="App-main">
         <Section>
-          <GithubRepoList/>
+          <div className="App-main-content">
+            <GithubRepoList/>
+            <BookmarkList/>
+          </div>
         </Section>
       </main>
     </div>

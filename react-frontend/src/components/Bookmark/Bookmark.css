@@ -1,0 +1,8 @@
+.Bookmark {
+    text-align: left;
+    padding: 0.5em 2em;
+}
+
+.Bookmark:hover {
+    background: rgba(255, 255, 255, 0.5);
+}

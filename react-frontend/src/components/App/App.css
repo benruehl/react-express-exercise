@@ -33,6 +33,14 @@
   margin: auto;
 }
 
+.App-main-content {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  margin-top: 2em;
+  align-items: flex-start;
+}
+
 .App-link {
   color: #61dafb;
 }

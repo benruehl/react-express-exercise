@@ -25,7 +25,7 @@ const GithubRepoList: React.FC<Props> = ({ repositories, isFetching, errorMessag
                 <ul className='Github-list'>
                     {repositories.map((el: Repository) => (
                         <li key={el.id} className='Github-repo-item'>
-                            <GithubRepo repository={el} name={el.name}/>
+                            <GithubRepo repository={el}/>
                         </li>
                     ))}
                 </ul>

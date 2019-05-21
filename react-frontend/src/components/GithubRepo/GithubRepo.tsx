@@ -6,10 +6,9 @@ import './GithubRepo.css';
 
 interface Props {
     repository: Repository;
-    name: string;
 }
 
-const GithubRepo: React.FC<Props> = ({ repository, name }: Props) => {
+const GithubRepo: React.FC<Props> = ({ repository }: Props) => {
     const onClick = () => {
         store.dispatch(bookmarkRepository(repository));
     }
@@ -17,7 +16,7 @@ const GithubRepo: React.FC<Props> = ({ repository, name }: Props) => {
     return (
         <div className='GithubRepo'>
             <button className='GithubRepo-icon' onClick={onClick}>{repository.isBookmarked ? 'Un-Bookmark' : 'Bookmark'}</button>
-            <a>{name}</a>
+            <a>{repository.name}</a>
         </div>
     );
 };

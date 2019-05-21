@@ -1,0 +1,25 @@
+.Bookmarks {
+    min-width: 30em;
+    min-height: 40em;
+    margin-left: 2em;
+    background: #dce0e8;
+    border: 1px solid #e0e0e0;
+    border-radius: 0.5em;
+}
+
+.Bookmarks-header {
+    color: white;
+    background: #282c34;
+    border-radius: 0.5em 0.5em 0 0;
+}
+
+.Bookmarks-header-title {
+    margin: 0;
+    padding: 1.2em;
+}
+
+.Bookmarks-list {
+    list-style: none;
+    padding: 0;
+    margin: 2em 0 0 0;
+}
