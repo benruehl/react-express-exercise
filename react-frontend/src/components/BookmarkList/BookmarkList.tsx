@@ -17,7 +17,7 @@ const BookmarkList: React.FC<Props> = ({ repositories }) => {
             </header>
             <ul className='Bookmarks-list'>
                 {repositories.map(el => (
-                    <li>
+                    <li key={el.id}>
                         <Bookmark repository={el}/>
                     </li>
                 ))}
