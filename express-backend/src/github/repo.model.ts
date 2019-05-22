@@ -27,9 +27,14 @@ class GithubRepoModel implements RepositoryModel {
             );
 
             return response.data.items.map(
-                (item: RemoteGithubRepository): Repository => {
-                    return { id: item.id, name: item.full_name };
-                },
+                (item: RemoteGithubRepository): Repository => ({
+                    id: item.id,
+                    name: item.full_name,
+                    description: item.description,
+                    githubUrl: item.html_url,
+                    starsCount: item.watchers_count,
+                    forksCount: item.forks_count,
+                }),
             );
         } catch (e) {
             console.error(e);
@@ -55,12 +60,20 @@ class GithubRepoModel implements RepositoryModel {
                         return {
                             id: response.data.id,
                             name: response.data.full_name,
+                            description: response.data.description,
+                            githubUrl: response.data.html_url,
+                            starsCount: response.data.watchers_count,
+                            forksCount: response.data.forks_count,
                         };
                     } catch (e) {
                         console.error(e);
                         return {
                             id: NaN,
                             name: "",
+                            description: "",
+                            githubUrl: "",
+                            starsCount: 0,
+                            forksCount: 0,
                         };
                     }
                 },

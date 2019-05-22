@@ -3,6 +3,10 @@ import { Action } from "redux";
 export interface SearchResultRepository {
     id: number;
     name: string;
+    description: string;
+    githubUrl: string;
+    starsCount: number;
+    forksCount: number;
     isBookmarked: boolean;
 }
 

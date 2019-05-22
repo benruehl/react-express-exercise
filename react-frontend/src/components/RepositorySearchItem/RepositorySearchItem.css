@@ -1,8 +1,23 @@
 .RepositorySearchItem {
     padding: 1em 2em;
     text-align: start;
+    display: flex;
+    flex-direction: row;
 }
 
-.RepositorySearchItem-icon {
+.RepositorySearchItem-name {
+    flex: 1;
+}
+
+.RepositorySearchItem-icon:not(:last-child) {
     margin-right: 1em;
+}
+
+.RepositorySearchItem-counter {
+    background: #dce0e8;
+    border-radius: 0.5em;
+    font-size: 0.8em;
+    padding: 0.2em 0.6em;
+    min-width: 7em;
+    text-align: center;
 }

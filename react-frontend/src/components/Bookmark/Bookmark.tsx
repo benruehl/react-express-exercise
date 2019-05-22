@@ -9,7 +9,7 @@ interface Props {
 const Bookmark: React.FC<Props> = ({ repository }) => {
     return (
         <div className='Bookmark'>
-            <a>{repository.name}</a>
+            <a href={repository.githubUrl} title={repository.description}>{repository.name}</a>
         </div>
     );
 }
