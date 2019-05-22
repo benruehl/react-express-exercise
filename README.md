@@ -2,6 +2,11 @@
 
 An exercise consisting of a react client and an express server interacting with the GitHub API
 
+## Prerequisites
+
+- [Node.js](https://nodejs.org/en/) installed (tested with v10)
+- [npm](https://www.npmjs.com/) installed (tested with v5.3)
+
 ## Installation of backend
 
 1. Go to backend directory
