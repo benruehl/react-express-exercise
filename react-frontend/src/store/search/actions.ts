@@ -13,7 +13,7 @@ export function fetchRepositories(searchTerm: string): any {
     return function(dispatch: ThunkDispatch<AppState, void, SearchActionTypes>) {
         dispatch(requestRepositories())
     
-        return axios.get(`http://localhost:4000/repos?q=${searchTerm}`)
+        return axios.get(`${process.env.REACT_APP_BACKEND_URL}/repos?q=${searchTerm}`)
             .then(
                 response => dispatch(fetchRepositoriesSuccess(response.data)),
                 error => dispatch(fetchRepositoriesError(error.message))

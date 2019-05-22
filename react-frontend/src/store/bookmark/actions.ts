@@ -17,7 +17,7 @@ export function bookmarkRepository(repository: SearchResultRepository): any {
     return function(dispatch: ThunkDispatch<AppState, void, BookmarkActionTypes>) {
         dispatch(requestRepositoryBookmark(repository))
     
-        return axios.put(`http://localhost:4000/repos/${repository.id}/bookmark`)
+        return axios.put(`${process.env.REACT_APP_BACKEND_URL}/repos/${repository.id}/bookmark`)
             .then(
                 response => dispatch(bookmarkRepositorySuccess()),
                 error => dispatch(bookmarkRepositoryError(error.message))
@@ -49,7 +49,7 @@ export function fetchBookmarkedRepositories(): any {
     return function(dispatch: ThunkDispatch<AppState, void, BookmarkActionTypes>) {
         dispatch(requestBookmarkedRepositories())
     
-        return axios.get(`http://localhost:4000/repos/bookmarks`)
+        return axios.get(`${process.env.REACT_APP_BACKEND_URL}/repos/bookmarks`)
             .then(
                 response => dispatch(fetchBookmarkedRepositoriesSuccess(response.data)),
                 error => dispatch(fetchBookmarkedRepositoriesError(error.message))
