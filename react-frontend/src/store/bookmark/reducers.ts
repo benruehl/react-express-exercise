@@ -17,9 +17,13 @@ const initialState: BookmarkState = {
 export function bookmarkReducer(state = initialState, action: BookmarkActionTypes): BookmarkState {
     switch (action.type) {
         case REPOSITORIES_BOOKMARK:
-            return {
-                ...state,
-                repositories: [...state.repositories, action.repository],
+            if (state.repositories.some(r => r.id === action.repository.id)) {
+                return state;
+            } else {
+                return {
+                    ...state,
+                    repositories: [...state.repositories, action.repository],
+                }
             }
         case REPOSITORIES_BOOKMARKED_FETCH:
             return {
