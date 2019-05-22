@@ -18,6 +18,10 @@ class GithubRepoController implements Controller {
             `${this.routePrefix}/:id/bookmark`,
             this.addBookmark.bind(this),
         );
+        this.router.delete(
+            `${this.routePrefix}/:id/bookmark`,
+            this.removeBookmark.bind(this),
+        );
         this.router.get(
             `${this.routePrefix}/bookmarks`,
             this.getBookmarks.bind(this),
@@ -35,6 +39,12 @@ class GithubRepoController implements Controller {
     private addBookmark(req: express.Request, res: express.Response): void {
         const repoId = req.params.id;
         this.model.addBookmark(repoId);
+        res.send();
+    }
+
+    private removeBookmark(req: express.Request, res: express.Response): void {
+        const repoId = req.params.id;
+        this.model.removeBookmark(repoId);
         res.send();
     }
 

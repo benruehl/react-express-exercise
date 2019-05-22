@@ -48,6 +48,13 @@ class GithubRepoModel implements RepositoryModel {
         }
     }
 
+    public removeBookmark(repoId: number): void {
+        const index = this.bookmarks.indexOf(repoId);
+        if (index >= 0) {
+            this.bookmarks.splice(index, 1);
+        }
+    }
+
     public async getBookmarkedRepos(): Promise<Repository[]> {
         const bookmarkedRepos = await Promise.all(
             this.bookmarks.map(

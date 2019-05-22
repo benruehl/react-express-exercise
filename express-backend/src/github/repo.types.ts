@@ -10,6 +10,7 @@ export interface Repository {
 export interface RepositoryModel {
     getRepos(searchTerm: string): Promise<Repository[]>;
     addBookmark(repoId: number): void;
+    removeBookmark(repoId: number): void;
     getBookmarkedRepos(): Promise<Repository[]>;
 }
 
