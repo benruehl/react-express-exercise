@@ -1,6 +1,6 @@
 import axios from "axios";
 import { ThunkDispatch } from "redux-thunk";
-import store, { AppState } from "..";
+import { AppState } from "..";
 import { 
     SearchActionTypes,
     SearchResultRepository,
