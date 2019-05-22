@@ -39,7 +39,7 @@ cd react-frontend
 2. Install project dependencies
 
 ```sh
-yarn
+npm install
 ```
 
 3. Start application
