@@ -5,6 +5,7 @@ import {
     REPOSITORIES_BOOKMARKED_FETCH,
     REPOSITORIES_BOOKMARKED_FETCH_SUCCESS,
     REPOSITORIES_BOOKMARKED_FETCH_ERROR,
+    REPOSITORIES_UNBOOKMARK,
 } from "./types";
 
 const initialState: BookmarkState = {
@@ -24,6 +25,11 @@ export function bookmarkReducer(state = initialState, action: BookmarkActionType
                     ...state,
                     repositories: [...state.repositories, action.repository],
                 }
+            }
+        case REPOSITORIES_UNBOOKMARK:
+            return {
+                ...state,
+                repositories: state.repositories.filter(r => r.id !== action.repository.id),
             }
         case REPOSITORIES_BOOKMARKED_FETCH:
             return {

@@ -1,7 +1,7 @@
 import React from 'react';
 import store from '../../store';
 import { SearchResultRepository } from '../../store/search/types';
-import { bookmarkRepository } from '../../store/bookmark/actions';
+import { bookmarkRepository, unbookmarkRepository } from '../../store/bookmark/actions';
 import './RepositorySearchItem.css';
 
 interface Props {
@@ -10,7 +10,11 @@ interface Props {
 
 const RepositorySearchItem: React.FC<Props> = ({ repository }: Props) => {
     const onClick = () => {
-        store.dispatch(bookmarkRepository(repository));
+        if (!repository.isBookmarked) {
+            store.dispatch(bookmarkRepository(repository));
+        } else {
+            store.dispatch(unbookmarkRepository(repository));
+        }
     }
 
     return (

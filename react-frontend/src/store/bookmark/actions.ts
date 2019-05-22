@@ -8,9 +8,12 @@ import {
     REPOSITORIES_BOOKMARK,
     REPOSITORIES_BOOKMARK_ERROR,
     REPOSITORIES_BOOKMARK_SUCCESS,
+    REPOSITORIES_UNBOOKMARK,
+    REPOSITORIES_UNBOOKMARK_SUCCESS,
+    REPOSITORIES_UNBOOKMARK_ERROR,
     REPOSITORIES_BOOKMARKED_FETCH,
     REPOSITORIES_BOOKMARKED_FETCH_SUCCESS,
-    REPOSITORIES_BOOKMARKED_FETCH_ERROR
+    REPOSITORIES_BOOKMARKED_FETCH_ERROR,
 } from "./types";
 
 export function bookmarkRepository(repository: SearchResultRepository): any {
@@ -41,6 +44,38 @@ export function bookmarkRepositorySuccess(): BookmarkActionTypes {
 export function bookmarkRepositoryError(errorMessage: string): BookmarkActionTypes {
     return {
         type: REPOSITORIES_BOOKMARK_ERROR,
+        errorMessage: errorMessage,
+    }
+}
+
+export function unbookmarkRepository(repository: SearchResultRepository | BookmarkedRepository): any {
+    return function(dispatch: ThunkDispatch<AppState, void, BookmarkActionTypes>) {
+        dispatch(requestRepositoryBookmarkDeletion(repository))
+    
+        return axios.delete(`${process.env.REACT_APP_BACKEND_URL}/repos/${repository.id}/bookmark`)
+            .then(
+                response => dispatch(unbookmarkRepositorySuccess()),
+                error => dispatch(unbookmarkRepositoryError(error.message))
+            );
+      }
+}
+
+function requestRepositoryBookmarkDeletion(repository: SearchResultRepository | BookmarkedRepository): BookmarkActionTypes {
+    return {
+        type: REPOSITORIES_UNBOOKMARK,
+        repository: repository,
+    }
+}
+
+export function unbookmarkRepositorySuccess(): BookmarkActionTypes {
+    return {
+        type: REPOSITORIES_UNBOOKMARK_SUCCESS,
+    }
+}
+
+export function unbookmarkRepositoryError(errorMessage: string): BookmarkActionTypes {
+    return {
+        type: REPOSITORIES_UNBOOKMARK_ERROR,
         errorMessage: errorMessage,
     }
 }

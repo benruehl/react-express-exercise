@@ -34,6 +34,24 @@ interface BookmarkRepositoryErrorAction extends Action {
     errorMessage: string;
 }
 
+export const REPOSITORIES_UNBOOKMARK = 'REPOSITORIES_UNBOOKMARK';
+export const REPOSITORIES_UNBOOKMARK_SUCCESS = 'REPOSITORIES_UNBOOKMARK_SUCCESS';
+export const REPOSITORIES_UNBOOKMARK_ERROR = 'REPOSITORIES_UNBOOKMARK_ERROR';
+
+interface UnBookmarkRepositoryAction extends Action {
+    type: typeof REPOSITORIES_UNBOOKMARK;
+    repository: BookmarkedRepository;
+}
+
+interface UnBookmarkRepositorySuccessAction extends Action {
+    type: typeof REPOSITORIES_UNBOOKMARK_SUCCESS;
+}
+
+interface UnBookmarkRepositoryErrorAction extends Action {
+    type: typeof REPOSITORIES_UNBOOKMARK_ERROR;
+    errorMessage: string;
+}
+
 export const REPOSITORIES_BOOKMARKED_FETCH = 'REPOSITORIES_BOOKMARKED_FETCH';
 export const REPOSITORIES_BOOKMARKED_FETCH_SUCCESS = 'REPOSITORIES_BOOKMARKED_FETCH_SUCCESS';
 export const REPOSITORIES_BOOKMARKED_FETCH_ERROR = 'REPOSITORIES_BOOKMARKED_FETCH_ERROR';
@@ -56,6 +74,9 @@ export type BookmarkActionTypes =
     BookmarkRepositoryAction |
     BookmarkRepositorySuccessAction |
     BookmarkRepositoryErrorAction |
+    UnBookmarkRepositoryAction |
+    UnBookmarkRepositorySuccessAction |
+    UnBookmarkRepositoryErrorAction |
     FetchBookmarkedRepositoriesAction |
     FetchBookmarkedRepositoriesSuccessAction |
     FetchBookmarkedRepositoriesErrorAction;

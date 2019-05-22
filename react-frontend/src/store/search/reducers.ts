@@ -5,7 +5,11 @@ import {
     REPOSITORIES_FETCH_SUCCESS,
     REPOSITORIES_FETCH_ERROR,
 } from "./types";
-import { REPOSITORIES_BOOKMARK, BookmarkActionTypes } from "../bookmark/types";
+import {
+    BookmarkActionTypes,
+    REPOSITORIES_BOOKMARK,
+    REPOSITORIES_UNBOOKMARK
+} from "../bookmark/types";
 
 const initialState: SearchState = {
     errorMessage: null,
@@ -40,6 +44,11 @@ export function searchReducer(state = initialState, action: SearchActionTypes | 
             return {
                 ...state,
                 repositories: state.repositories.map(r => r.id !== action.repository.id ? r : {...r, isBookmarked: true}),
+            }
+        case REPOSITORIES_UNBOOKMARK:
+            return {
+                ...state,
+                repositories: state.repositories.map(r => r.id !== action.repository.id ? r : {...r, isBookmarked: false}),
             }
         default:
             return state

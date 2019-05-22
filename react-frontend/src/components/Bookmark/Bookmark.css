@@ -1,6 +1,9 @@
 .Bookmark {
     text-align: left;
     padding: 0.5em 2em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .Bookmark:hover {
