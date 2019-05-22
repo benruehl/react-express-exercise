@@ -26,7 +26,7 @@ export function searchReducer(state = initialState, action: SearchActionTypes | 
         case REPOSITORIES_FETCH_SUCCESS:
             return {
                 ...state,
-                repositories: action.repositories,
+                repositories: action.repositories.map(r => action.bookmarkedRepositoryIds.includes(r.id) ? {...r, isBookmarked: true} : r),
                 isFetching: false,
                 errorMessage: "",
             }

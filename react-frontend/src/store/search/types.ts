@@ -29,6 +29,7 @@ interface FetchRepositoriesAction extends Action {
 interface FetchRepositoriesSuccessAction extends Action {
     type: typeof REPOSITORIES_FETCH_SUCCESS;
     repositories: SearchResultRepository[];
+    bookmarkedRepositoryIds: number[];
 }
 
 interface FetchRepositoriesErrorAction extends Action {
