@@ -29,7 +29,7 @@ class App {
 
     private initControllers(controllers: Controller[]): void {
         for (const controller of controllers) {
-            this.app.use("/", controller.getRouter());
+            this.app.use("/api/v1", controller.getRouter());
         }
     }
 }
